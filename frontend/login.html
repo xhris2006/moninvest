@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Connexion - Mon Invest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container" style="display: flex; flex-direction: column; justify-content: center; min-height: 100vh;">
+        <!-- Logo -->
+        <div style="text-align: center; margin-bottom: 40px;">
+            <div style="background: linear-gradient(135deg, #4361ee, #3a0ca3); width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                <i class="fas fa-chart-line" style="font-size: 40px; color: white;"></i>
+            </div>
+            <h1 style="margin-bottom: 8px;">Mon Invest</h1>
+            <p style="color: var(--gray);">10% de rendement par jour</p>
+        </div>
+
+        <!-- Formulaire de connexion -->
+        <div class="card" style="margin-bottom: 20px;">
+            <h2 style="margin-bottom: 24px; text-align: center;">Connexion</h2>
+            
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label">Email ou téléphone</label>
+                    <div style="position: relative;">
+                        <i class="fas fa-user" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray);"></i>
+                        <input type="text" class="form-control" id="identifiant" placeholder="exemple@email.com" required style="padding-left: 44px;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Mot de passe</label>
+                    <div style="position: relative;">
+                        <i class="fas fa-lock" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray);"></i>
+                        <input type="password" class="form-control" id="password" placeholder="••••••••" required style="padding-left: 44px;">
+                        <i class="fas fa-eye" id="togglePassword" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--gray); cursor: pointer;"></i>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                    <label style="display: flex; align-items: center; gap: 8px;">
+                        <input type="checkbox" id="remember" style="accent-color: var(--primary); width: 18px; height: 18px;">
+                        <span style="font-size: 14px;">Se souvenir de moi</span>
+                    </label>
+                    <a href="#" onclick="showForgotPassword()" style="color: var(--primary); text-decoration: none; font-size: 14px;">Mot de passe oublié?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" style="padding: 16px; font-size: 16px;">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Se connecter
+                </button>
+            </form>
+        </div>
+
+        <!-- Lien inscription -->
+        <div style="text-align: center;">
+            <p style="color: var(--gray); margin-bottom: 8px;">Pas encore de compte ?</p>
+            <a href="register.html" class="btn" style="background: white; color: var(--primary); border: 2px solid var(--primary); padding: 12px 24px;">
+                <i class="fas fa-user-plus"></i>
+                Créer un compte
+            </a>
+        </div>
+
+        <!-- Modal 2FA -->
+        <div id="modal2FA" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+            <div style="background: white; padding: 24px; border-radius: 16px; width: 90%; max-width: 350px;">
+                <h3 style="margin-bottom: 16px;">🔐 Authentification à deux facteurs</h3>
+                <p style="color: var(--gray); margin-bottom: 20px;">Entrez le code généré par votre application d'authentification</p>
+                
+                <div style="display: flex; gap: 8px; margin-bottom: 20px;">
+                    <input type="text" class="form-control" id="code2FA1" maxlength="1" style="text-align: center; font-size: 24px;" oninput="moveToNext(this, 'code2FA2')">
+                    <input type="text" class="form-control" id="code2FA2" maxlength="1" style="text-align: center; font-size: 24px;" oninput="moveToNext(this, 'code2FA3')">
+                    <input type="text" class="form-control" id="code2FA3" maxlength="1" style="text-align: center; font-size: 24px;" oninput="moveToNext(this, 'code2FA4')">
+                    <input type="text" class="form-control" id="code2FA4" maxlength="1" style="text-align: center; font-size: 24px;" oninput="moveToNext(this, 'code2FA5')">
+                    <input type="text" class="form-control" id="code2FA5" maxlength="1" style="text-align: center; font-size: 24px;" oninput="moveToNext(this, 'code2FA6')">
+                    <input type="text" class="form-control" id="code2FA6" maxlength="1" style="text-align: center; font-size: 24px;">
+                </div>
+
+                <button onclick="verify2FA()" class="btn btn-primary btn-block" style="padding: 14px;">
+                    Vérifier
+                </button>
+                <button onclick="closeModal2FA()" class="btn btn-block" style="margin-top: 8px; background: var(--light);">
+                    Annuler
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Afficher/masquer mot de passe
+        document.getElementById('togglePassword')?.addEventListener('click', function() {
+            const password = document.getElementById('password');
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // Gestion connexion
+        async function handleLogin(event) {
+            event.preventDefault();
+            
+            const identifiant = document.getElementById('identifiant').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+
+            // Simuler la connexion
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connexion...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                // Simuler 2FA pour démo
+                if (identifiant === 'demo@test.com') {
+                    showModal2FA();
+                } else {
+                    // Connexion réussie
+                    localStorage.setItem('token', 'demo-token');
+                    localStorage.setItem('user', JSON.stringify({
+                        nom: 'Jean Dupont',
+                        email: identifiant
+                    }));
+                    window.location.href = 'index.html';
+                }
+                
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        }
+
+        // Modal 2FA
+        function showModal2FA() {
+            document.getElementById('modal2FA').style.display = 'flex';
+        }
+
+        function closeModal2FA() {
+            document.getElementById('modal2FA').style.display = 'none';
+        }
+
+        function moveToNext(current, nextId) {
+            if (current.value.length === 1) {
+                document.getElementById(nextId)?.focus();
+            }
+        }
+
+        function verify2FA() {
+            const code = Array.from({length: 6}, (_, i) => 
+                document.getElementById(`code2FA${i+1}`).value
+            ).join('');
+
+            alert(`Code 2FA: ${code} (simulation)`);
+            closeModal2FA();
+            window.location.href = 'index.html';
+        }
+
+        // Mot de passe oublié
+        function showForgotPassword() {
+            const email = prompt('Entrez votre adresse email :');
+            if (email) {
+                alert(`Un lien de réinitialisation a été envoyé à ${email}`);
+            }
+        }
+    </script>
+</body>
+</html>

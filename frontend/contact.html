@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contact - Mon Invest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête -->
+        <div style="text-align: center; margin-bottom: 32px;">
+            <h1>Contactez-nous</h1>
+            <p style="color: var(--gray);">Notre équipe est disponible 24h/24, 7j/7</p>
+        </div>
+
+        <!-- Boutons de contact rapide -->
+        <div style="margin-bottom: 32px;">
+            <h3 style="margin-bottom: 16px;">📱 Support instantané</h3>
+            <div class="contact-buttons">
+                <a href="https://wa.me/2250708091011" class="contact-btn whatsapp" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
+                    WhatsApp
+                </a>
+                <a href="https://t.me/moninvest_support" class="contact-btn telegram" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fab fa-telegram-plane" style="font-size: 24px;"></i>
+                    Telegram
+                </a>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px;">
+                <a href="tel:+2250708091011" style="background: var(--light); color: var(--dark); padding: 16px; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fas fa-phone"></i>
+                    Appel direct
+                </a>
+                <a href="mailto:support@moninvest.com" style="background: var(--light); color: var(--dark); padding: 16px; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+        </div>
+
+        <!-- Formulaire de réclamation / requête -->
+        <div class="card" style="margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                <div style="background: var(--primary); padding: 12px; border-radius: 12px;">
+                    <i class="fas fa-pen" style="color: white; font-size: 20px;"></i>
+                </div>
+                <h3 style="margin-bottom: 0;">Envoyer une réclamation ou requête</h3>
+            </div>
+
+            <form id="reclamationForm" onsubmit="envoyerReclamation(event)">
+                <!-- Sujet -->
+                <div class="form-group">
+                    <label class="form-label">Sujet de la requête</label>
+                    <select class="form-select" id="sujet" required>
+                        <option value="">Sélectionnez un sujet</option>
+                        <option value="paiement">💰 Problème de paiement</option>
+                        <option value="pass">📊 Question sur les pass</option>
+                        <option value="bug">🔧 Bug technique</option>
+                        <option value="reclamation">⚠️ Réclamation</option>
+                        <option value="information">ℹ️ Demande d'information</option>
+                        <option value="partenariat">🤝 Partenariat</option>
+                        <option value="autre">📝 Autre</option>
+                    </select>
+                </div>
+
+                <!-- Priorité (mobile) -->
+                <div class="form-group">
+                    <label class="form-label">Priorité</label>
+                    <div style="display: flex; gap: 12px;">
+                        <label style="flex: 1; display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--light); border-radius: 8px;">
+                            <input type="radio" name="priorite" value="basse" style="accent-color: var(--success);" checked>
+                            <span style="font-size: 14px;">Basse</span>
+                        </label>
+                        <label style="flex: 1; display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--light); border-radius: 8px;">
+                            <input type="radio" name="priorite" value="moyenne" style="accent-color: var(--warning);">
+                            <span style="font-size: 14px;">Moyenne</span>
+                        </label>
+                        <label style="flex: 1; display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--light); border-radius: 8px;">
+                            <input type="radio" name="priorite" value="haute" style="accent-color: var(--danger);">
+                            <span style="font-size: 14px;">Haute</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Message -->
+                <div class="form-group">
+                    <label class="form-label">Votre message</label>
+                    <textarea class="form-control" id="message" rows="6" placeholder="Décrivez votre problème ou demande en détail..." required style="resize: vertical; min-height: 150px;"></textarea>
+                </div>
+
+                <!-- Pièce jointe -->
+                <div class="form-group">
+                    <label class="form-label">Pièce jointe (optionnel)</label>
+                    <div style="border: 2px dashed var(--border); border-radius: 12px; padding: 20px; text-align: center; background: var(--light);">
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 32px; color: var(--primary); margin-bottom: 8px;"></i>
+                        <p style="margin-bottom: 8px; font-size: 14px;">Glissez vos fichiers ici ou</p>
+                        <label style="background: var(--primary); color: white; padding: 10px 20px; border-radius: 8px; cursor: pointer; display: inline-block; font-size: 14px;">
+                            <i class="fas fa-folder-open"></i> Parcourir
+                            <input type="file" id="pieceJointe" style="display: none;" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                        </label>
+                        <p style="margin-top: 8px; font-size: 11px; color: var(--gray);">Formats acceptés: JPG, PNG, PDF, DOC (Max 5 Mo)</p>
+                    </div>
+                </div>
+
+                <!-- Captcha simple (mobile) -->
+                <div class="form-group">
+                    <label class="form-label">Vérification</label>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span style="background: var(--light); padding: 12px; border-radius: 8px; font-weight: 700;">5 + 3 =</span>
+                        <input type="number" class="form-control" id="captcha" placeholder="Résultat" required style="width: 100px;">
+                    </div>
+                </div>
+
+                <!-- Bouton d'envoi -->
+                <button type="submit" class="btn btn-primary btn-block" style="padding: 16px; font-size: 16px; margin-top: 16px;">
+                    <i class="fas fa-paper-plane"></i> Envoyer la requête
+                </button>
+            </form>
+        </div>
+
+        <!-- Mes réclamations récentes (historique) -->
+        <div class="card">
+            <div class="card-header">
+                <h3>📋 Mes dernières requêtes</h3>
+                <a href="#" style="color: var(--primary); text-decoration: none; font-size: 14px;">Voir tout</a>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <!-- Requête 1 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--light); border-radius: 8px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 40px; height: 40px; background: rgba(67, 97, 238, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-credit-card" style="color: var(--primary);"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600;">Problème de paiement</div>
+                            <div style="font-size: 12px; color: var(--gray);">REF: #20240215-001</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="background: var(--success); color: white; padding: 4px 8px; border-radius: 12px; font-size: 11px;">Résolu</span>
+                        <div style="font-size: 11px; color: var(--gray); margin-top: 4px;">Il y a 2 jours</div>
+                    </div>
+                </div>
+
+                <!-- Requête 2 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--light); border-radius: 8px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 40px; height: 40px; background: rgba(255, 183, 3, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-ticket-alt" style="color: var(--warning);"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600;">Question sur Pass Or</div>
+                            <div style="font-size: 12px; color: var(--gray);">REF: #20240210-045</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="background: var(--warning); color: white; padding: 4px 8px; border-radius: 12px; font-size: 11px;">En cours</span>
+                        <div style="font-size: 11px; color: var(--gray); margin-top: 4px;">Il y a 5 jours</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Contact -->
+        <div style="margin-top: 24px; margin-bottom: 30px;">
+            <details style="background: var(--light); border-radius: 8px; margin-bottom: 8px;">
+                <summary style="padding: 16px; font-weight: 600; cursor: pointer;">
+                    ⏱️ Quels sont les délais de réponse ?
+                </summary>
+                <div style="padding: 16px; padding-top: 0; color: var(--gray);">
+                    Nous répondons généralement sous 2-4 heures en semaine et sous 12 heures le week-end.
+                    Les urgences sont traitées en priorité.
+                </div>
+            </details>
+
+            <details style="background: var(--light); border-radius: 8px; margin-bottom: 8px;">
+                <summary style="padding: 16px; font-weight: 600; cursor: pointer;">
+                    📞 Comment parler à un conseiller ?
+                </summary>
+                <div style="padding: 16px; padding-top: 0; color: var(--gray);">
+                    Nos conseillers sont disponibles par WhatsApp et Telegram de 8h à 22h (GMT).
+                    Pour les urgences, appelez le +225 07 08 09 10 11.
+                </div>
+            </details>
+
+            <details style="background: var(--light); border-radius: 8px;">
+                <summary style="padding: 16px; font-weight: 600; cursor: pointer;">
+                    📧 Où sont traitées mes réclamations ?
+                </summary>
+                <div style="padding: 16px; padding-top: 0; color: var(--gray);">
+                    Votre requête est immédiatement envoyée à notre équipe support. 
+                    Vous recevrez une confirmation par email et une notification dans l'application.
+                </div>
+            </details>
+        </div>
+
+        <!-- Adresse physique (optionnel) -->
+        <div style="background: linear-gradient(135deg, #1e1e2f, #2d2d44); color: white; padding: 24px; border-radius: var(--radius); margin-bottom: 20px; text-align: center;">
+            <i class="fas fa-map-marker-alt" style="font-size: 32px; margin-bottom: 12px;"></i>
+            <h3 style="color: white; margin-bottom: 8px;">Bureau principal</h3>
+            <p style="opacity: 0.9; margin-bottom: 4px;">Abidjan, Cocody</p>
+            <p style="opacity: 0.9;">Rue des Jardins, Immeuble Omega</p>
+            <p style="opacity: 0.9; margin-top: 8px;">Lun - Ven : 9h00 - 18h00</p>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="pass.html" class="nav-item">
+            <i class="fas fa-ticket-alt"></i>
+            <span>Pass</span>
+        </a>
+        <a href="affiliation.html" class="nav-item">
+            <i class="fas fa-share-alt"></i>
+            <span>Affiliation</span>
+        </a>
+        <a href="profil.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profil</span>
+        </a>
+        <a href="contact.html" class="nav-item active">
+            <i class="fas fa-headset"></i>
+            <span>Contact</span>
+        </a>
+    </nav>
+
+    <script>
+        function envoyerReclamation(event) {
+            event.preventDefault();
+            
+            // Récupération des valeurs
+            const sujet = document.getElementById('sujet').value;
+            const priorite = document.querySelector('input[name="priorite"]:checked').value;
+            const message = document.getElementById('message').value;
+            const captcha = document.getElementById('captcha').value;
+
+            // Vérification captcha
+            if (parseInt(captcha) !== 8) {
+                alert('❌ Vérification incorrecte. Veuillez réessayer.');
+                return;
+            }
+
+            // Vérification des champs
+            if (!sujet || !message) {
+                alert('❓ Veuillez remplir tous les champs obligatoires');
+                return;
+            }
+
+            // Simulation d'envoi
+            const loadingBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = loadingBtn.innerHTML;
+            loadingBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            loadingBtn.disabled = true;
+
+            setTimeout(() => {
+                alert('✅ Votre requête a été envoyée avec succès !\nNotre équipe vous répondra dans les plus brefs délais.');
+                loadingBtn.innerHTML = originalText;
+                loadingBtn.disabled = false;
+                document.getElementById('reclamationForm').reset();
+            }, 1500);
+        }
+
+        // Aperçu du nom de fichier pour pièce jointe
+        document.getElementById('pieceJointe').addEventListener('change', function(e) {
+            if (this.files.length > 0) {
+                const fileName = this.files[0].name;
+                const parentDiv = this.closest('div');
+                const existingPreview = parentDiv.querySelector('.file-preview');
+                
+                if (existingPreview) {
+                    existingPreview.remove();
+                }
+
+                const preview = document.createElement('p');
+                preview.className = 'file-preview';
+                preview.style.marginTop = '12px';
+                preview.style.fontSize = '13px';
+                preview.style.color = 'var(--primary)';
+                preview.innerHTML = '<i class="fas fa-check-circle"></i> Fichier sélectionné: ' + fileName;
+                parentDiv.appendChild(preview);
+            }
+        });
+    </script>
+</body>
+</html>

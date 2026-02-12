@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Accueil - Mon Invest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête avec profil -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div>
+                <h1 style="margin-bottom: 0;">Bonjour,</h1>
+                <p style="color: var(--gray);">Xhris Dior</p>
+            </div>
+            <a href="profil.html">
+                <img src="https://ui-avatars.com/api/?name=Xhris+Dior&size=80&background=4361ee&color=fff" alt="Profil" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary);">
+            </a>
+        </div>
+
+        <!-- Carte Solde -->
+        <div class="balance-card">
+            <div class="balance-label">Solde disponible</div>
+            <div class="balance-amount">
+                790 800 <span class="balance-currency">FCFA</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="opacity: 0.9;">Gain aujourd'hui: +3 200 FCFA</span>
+                <span style="background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 20px; font-size: 12px;">
+                    <i class="fas fa-arrow-up"></i> +12%
+                </span>
+            </div>
+        </div>
+
+        <!-- Mini Graphique (Simulé) -->
+        <div class="card" style="margin-bottom: 24px;">
+            <div class="card-header">
+                <h3>Évolution des gains</h3>
+                <span style="color: var(--primary); font-size: 14px;">7 derniers jours</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 100px;">
+                <div style="display: flex; flex-direction: column; align-items: center; width: 14%;">
+                    <div style="height: 60px; width: 100%; background: var(--primary); opacity: 0.5; border-radius: 8px 8px 0 0;"></div>
+                    <span style="font-size: 12px; margin-top: 8px;">Lun</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 14%;">
+                    <div style="height: 75px; width: 100%; background: var(--primary); opacity: 0.6; border-radius: 8px 8px 0 0;"></div>
+                    <span style="font-size: 12px; margin-top: 8px;">Mar</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 14%;">
+                    <div style="height: 45px; width: 100%; background: var(--primary); opacity: 0.5; border-radius: 8px 8px 0 0;"></div>
+                    <span style="font-size: 12px; margin-top: 8px;">Mer</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 14%;">
+                    <div style="height: 80px; width: 100%; background: var(--primary); opacity: 0.7; border-radius: 8px 8px 0 0;"></div>
+                    <span style="font-size: 12px; margin-top: 8px;">Jeu</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 14%;">
+                    <div style="height: 90px; width: 100%; background: var(--primary); opacity: 0.8; border-radius: 8px 8px 0 0;"></div>
+                    <span style="font-size: 12px; margin-top: 8px;">Ven</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 14%;">
+                    <div style="height: 70px; width: 100%; background: var(--primary); opacity: 0.6; border-radius: 8px 8px 0 0;"></div>
+                    <span style="font-size: 12px; margin-top: 8px;">Sam</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 14%;">
+                    <div style="height: 85px; width: 100%; background: var(--primary); opacity: 0.7; border-radius: 8px 8px 0 0;"></div>
+                    <span style="font-size: 12px; margin-top: 8px;">Dim</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lien d'affiliation -->
+        <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <div style="display: flex; align-items: center; margin-bottom: 16px;">
+                <i class="fas fa-gift" style="font-size: 24px; margin-right: 12px;"></i>
+                <h3 style="color: white; margin-bottom: 0;">Votre lien d'affiliation</h3>
+            </div>
+            <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 8px; margin-bottom: 16px; word-break: break-all;">
+                <span style="font-size: 14px;">https://moninvest.com/ref/1234</span>
+            </div>
+            <div style="display: flex; gap: 12px;">
+                <button class="btn" style="background: white; color: var(--primary); flex: 1;" onclick="copierLien()">
+                    <i class="fas fa-copy"></i> Copier
+                </button>
+                <a href="affiliation.html" class="btn" style="background: white; color: var(--primary); flex: 1; text-align: center;">
+                    <i class="fas fa-chart-line"></i> Stats
+                </a>
+            </div>
+        </div>
+
+        <!-- Transactions récentes -->
+        <div class="card">
+            <div class="card-header">
+                <h3>Transactions récentes</h3>
+                <a href="#" style="color: var(--primary); text-decoration: none; font-size: 14px;">Voir tout</a>
+            </div>
+            
+            <ul class="transaction-list">
+                <li class="transaction-item">
+                    <div style="width: 40px; height: 40px; background: rgba(6, 214, 160, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+                        <i class="fas fa-arrow-down" style="color: var(--success);"></i>
+                    </div>
+                    <div class="transaction-info">
+                        <div class="transaction-title">Gain journalier - Pass Bronze</div>
+                        <div class="transaction-date">Aujourd'hui, 00:05</div>
+                    </div>
+                    <div class="transaction-amount amount-positive">+400 FCFA</div>
+                </li>
+                
+                <li class="transaction-item">
+                    <div style="width: 40px; height: 40px; background: rgba(239, 71, 111, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+                        <i class="fas fa-arrow-up" style="color: var(--danger);"></i>
+                    </div>
+                    <div class="transaction-info">
+                        <div class="transaction-title">Achat Pass Argent</div>
+                        <div class="transaction-date">Hier, 14:30</div>
+                    </div>
+                    <div class="transaction-amount amount-negative">-5 000 FCFA</div>
+                </li>
+                
+                <li class="transaction-item">
+                    <div style="width: 40px; height: 40px; background: rgba(6, 214, 160, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+                        <i class="fas fa-arrow-down" style="color: var(--success);"></i>
+                    </div>
+                    <div class="transaction-info">
+                        <div class="transaction-title">Commission filleul</div>
+                        <div class="transaction-date">Hier, 00:05</div>
+                    </div>
+                    <div class="transaction-amount amount-positive">+2 500 FCFA</div>
+                </li>
+                
+                <li class="transaction-item">
+                    <div style="width: 40px; height: 40px; background: rgba(6, 214, 160, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+                        <i class="fas fa-arrow-down" style="color: var(--success);"></i>
+                    </div>
+                    <div class="transaction-info">
+                        <div class="transaction-title">Gain journalier - Pass Or</div>
+                        <div class="transaction-date">Hier, 00:05</div>
+                    </div>
+                    <div class="transaction-amount amount-positive">+700 FCFA</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Actions rapides -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+            <a href="pass.html" class="btn btn-primary" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <i class="fas fa-shopping-cart"></i>
+                Acheter un pass
+            </a>
+            <a href="contact.html" class="btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: white; border: 1px solid var(--primary); color: var(--primary);">
+                <i class="fas fa-headset"></i>
+                Support
+            </a>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="pass.html" class="nav-item">
+            <i class="fas fa-ticket-alt"></i>
+            <span>Pass</span>
+        </a>
+        <a href="affiliation.html" class="nav-item">
+            <i class="fas fa-share-alt"></i>
+            <span>Affiliation</span>
+        </a>
+        <a href="profil.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profil</span>
+        </a>
+        <a href="contact.html" class="nav-item">
+            <i class="fas fa-headset"></i>
+            <span>Contact</span>
+        </a>
+    </nav>
+
+    <script>
+        function copierLien() {
+            navigator.clipboard.writeText('https://moninvest.com/ref/JEAN123');
+            alert('Lien copié dans le presse-papier !');
+        }
+    </script>
+</body>
+</html>

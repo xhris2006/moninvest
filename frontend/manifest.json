@@ -1,0 +1,89 @@
+{
+  "name": "Mon Invest - Investissement 10% quotidien",
+  "short_name": "MonInvest",
+  "description": "Plateforme d'investissement avec rendement de 10% par jour",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#4361ee",
+  "theme_color": "#4361ee",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "splash_pages": null,
+  "prefer_related_applications": false,
+  "scope": "/",
+  "categories": ["finance", "investment"],
+  "lang": "fr",
+  "dir": "ltr",
+  "shortcuts": [
+    {
+      "name": "Acheter un pass",
+      "short_name": "Pass",
+      "description": "Acheter un pass d'investissement",
+      "url": "/pass.html",
+      "icons": [{ "src": "/assets/icons/pass-icon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Mon solde",
+      "short_name": "Solde",
+      "description": "Voir mon solde et transactions",
+      "url": "/index.html",
+      "icons": [{ "src": "/assets/icons/solde-icon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Affiliation",
+      "short_name": "Parrainage",
+      "description": "Mon lien d'affiliation",
+      "url": "/affiliation.html",
+      "icons": [{ "src": "/assets/icons/affiliation-icon.png", "sizes": "192x192" }]
+    }
+  ]
+}

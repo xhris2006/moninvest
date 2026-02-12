@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Affiliation - Mon Invest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête -->
+        <div style="margin-bottom: 24px;">
+            <h1>Programme d'affiliation</h1>
+            <p style="color: var(--gray);">Gagnez 5% sur les achats de vos filleuls</p>
+        </div>
+
+        <!-- Stats globales -->
+        <div class="stats-grid" style="margin-bottom: 24px;">
+            <div class="stat-card" style="background: linear-gradient(135deg, #4361ee, #3a0ca3); color: white;">
+                <div class="stat-value" style="color: white;">24</div>
+                <div class="stat-label" style="color: rgba(255,255,255,0.9);">Filleuls</div>
+            </div>
+            <div class="stat-card" style="background: linear-gradient(135deg, #06d6a0, #05b586); color: white;">
+                <div class="stat-value" style="color: white;">125 000</div>
+                <div class="stat-label" style="color: rgba(255,255,255,0.9);">Gagné</div>
+            </div>
+            <div class="stat-card" style="background: linear-gradient(135deg, #ffb703, #fb8500); color: white;">
+                <div class="stat-value" style="color: white;">156</div>
+                <div class="stat-label" style="color: rgba(255,255,255,0.9);">Clics</div>
+            </div>
+        </div>
+
+        <!-- Lien d'affiliation principal -->
+        <div class="card">
+            <h3 style="margin-bottom: 16px;">🔗 Votre lien unique</h3>
+            <div class="affiliation-link-container">
+                <div class="affiliation-link">
+                    https://moninvest.com/ref/JEAN123
+                </div>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-primary" style="flex: 1;" onclick="copierLienAffiliation()">
+                        <i class="fas fa-copy"></i> Copier
+                    </button>
+                    <button class="btn" style="flex: 1; background: var(--light);" onclick="partagerLien()">
+                        <i class="fas fa-share"></i> Partager
+                    </button>
+                </div>
+            </div>
+
+            <!-- QR Code -->
+            <div class="qr-code">
+                <div id="qrcode" style="background: white; padding: 16px; border-radius: 12px;"></div>
+            </div>
+            <p style="text-align: center; font-size: 12px; color: var(--gray);">
+                Scannez ce QR code pour partager votre lien
+            </p>
+        </div>
+
+        <!-- Boutons de partage rapide -->
+        <div style="margin-bottom: 24px;">
+            <h3 style="margin-bottom: 12px;">📱 Partager sur</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <a href="#" onclick="partagerWhatsApp()" style="background: #25D366; color: white; padding: 14px; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fab fa-whatsapp" style="font-size: 20px;"></i>
+                    WhatsApp
+                </a>
+                <a href="#" onclick="partagerTelegram()" style="background: #0088cc; color: white; padding: 14px; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fab fa-telegram-plane" style="font-size: 20px;"></i>
+                    Telegram
+                </a>
+                <a href="#" onclick="partagerSMS()" style="background: var(--dark); color: white; padding: 14px; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fas fa-sms"></i>
+                    SMS
+                </a>
+                <a href="#" onclick="partagerEmail()" style="background: #EA4335; color: white; padding: 14px; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+        </div>
+
+        <!-- Liste des filleuls -->
+        <div class="card">
+            <div class="card-header">
+                <h3>👥 Mes filleuls (24)</h3>
+                <span style="color: var(--primary); font-size: 14px;">Cette semaine: +3</span>
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <!-- Filleul 1 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--light); border-radius: 8px; margin-bottom: 8px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <img src="https://ui-avatars.com/api/?name=Marie+Konan&size=40&background=4361ee&color=fff" style="width: 40px; height: 40px; border-radius: 50%;">
+                        <div>
+                            <div style="font-weight: 600;">Marie Konan</div>
+                            <div style="font-size: 12px; color: var(--gray);">Inscrit le 10/02/2025</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: var(--success);">+2 500</span>
+                        <div style="font-size: 11px; color: var(--gray);">Commission</div>
+                    </div>
+                </div>
+
+                <!-- Filleul 2 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--light); border-radius: 8px; margin-bottom: 8px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <img src="https://ui-avatars.com/api/?name=Kouassi+Paul&size=40&background=4361ee&color=fff" style="width: 40px; height: 40px; border-radius: 50%;">
+                        <div>
+                            <div style="font-weight: 600;">Kouassi Paul</div>
+                            <div style="font-size: 12px; color: var(--gray);">Inscrit le 08/02/2025</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: var(--success);">+1 750</span>
+                        <div style="font-size: 11px; color: var(--gray);">Commission</div>
+                    </div>
+                </div>
+
+                <!-- Filleul 3 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--light); border-radius: 8px; margin-bottom: 8px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <img src="https://ui-avatars.com/api/?name=Aicha+Diop&size=40&background=4361ee&color=fff" style="width: 40px; height: 40px; border-radius: 50%;">
+                        <div>
+                            <div style="font-weight: 600;">Aicha Diop</div>
+                            <div style="font-size: 12px; color: var(--gray);">Inscrit le 05/02/2025</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: var(--success);">+3 200</span>
+                        <div style="font-size: 11px; color: var(--gray);">Commission</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-block" style="background: var(--light); color: var(--primary);" onclick="voirTousFilleuls()">
+                Voir tous les filleuls
+            </button>
+        </div>
+
+        <!-- Graphique des gains affiliation -->
+        <div class="card">
+            <h3 style="margin-bottom: 16px;">📈 Évolution des commissions</h3>
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 150px; margin-bottom: 16px;">
+                <div style="display: flex; flex-direction: column; align-items: center; width: 12%;">
+                    <div style="height: 60px; width: 100%; background: var(--primary); opacity: 0.5; border-radius: 8px 8px 0 0;"></div>
+                    <span style="font-size: 11px; margin-top: 8px;">Jan</span>
+                    <span style="font-size: 10px; color: var(--gray);">12k</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 12%;">
+                    <div style="height: 80px; width: 100%; background: var(--primary); opacity: 0.6; border-radius: 8px 8px 0 0;"></div>
+                    <span style="font-size: 11px; margin-top: 8px;">Fév</span>
+                    <span style="font-size: 10px; color: var(--gray);">18k</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 12%;">
+                    <div style="height: 95px; width: 100%; background: var(--primary); opacity: 0.7; border-radius: 8px 8px 0 0;"></div>
+                    <span style="font-size: 11px; margin-top: 8px;">Mar</span>
+                    <span style="font-size: 10px; color: var(--gray);">22k</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 12%;">
+                    <div style="height: 110px; width: 100%; background: var(--primary); opacity: 0.8; border-radius: 8px 8px 0 0;"></div>
+                    <span style="font-size: 11px; margin-top: 8px;">Avr</span>
+                    <span style="font-size: 10px; color: var(--gray);">28k</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 12%;">
+                    <div style="height: 125px; width: 100%; background: var(--primary); opacity: 0.9; border-radius: 8px 8px 0 0;"></div>
+                    <span style="font-size: 11px; margin-top: 8px;">Mai</span>
+                    <span style="font-size: 10px; color: var(--gray);">32k</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 12%;">
+                    <div style="height: 140px; width: 100%; background: var(--primary); opacity: 1; border-radius: 8px 8px 0 0;"></div>
+                    <span style="font-size: 11px; margin-top: 8px;">Juin</span>
+                    <span style="font-size: 10px; color: var(--gray);">38k</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Palier de récompenses -->
+        <div class="card" style="background: linear-gradient(135deg, #ffb703, #fb8500); color: white;">
+            <h3 style="color: white; margin-bottom: 16px;">🏆 Objectifs d'affiliation</h3>
+            <div style="margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span>5 filleuls</span>
+                    <span>✅ 24/5</span>
+                </div>
+                <div style="width: 100%; background: rgba(255,255,255,0.3); height: 8px; border-radius: 4px;">
+                    <div style="width: 100%; background: white; height: 8px; border-radius: 4px;"></div>
+                </div>
+                <span style="font-size: 12px;">Bonus 5 000 FCFA débloqué</span>
+            </div>
+            <div style="margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span>15 filleuls</span>
+                    <span>✅ 24/15</span>
+                </div>
+                <div style="width: 100%; background: rgba(255,255,255,0.3); height: 8px; border-radius: 4px;">
+                    <div style="width: 100%; background: white; height: 8px; border-radius: 4px;"></div>
+                </div>
+                <span style="font-size: 12px;">Bonus 15 000 FCFA débloqué</span>
+            </div>
+            <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span>50 filleuls</span>
+                    <span>24/50</span>
+                </div>
+                <div style="width: 100%; background: rgba(255,255,255,0.3); height: 8px; border-radius: 4px;">
+                    <div style="width: 48%; background: white; height: 8px; border-radius: 4px;"></div>
+                </div>
+                <span style="font-size: 12px;">Prochain bonus: 25 000 FCFA</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="pass.html" class="nav-item">
+            <i class="fas fa-ticket-alt"></i>
+            <span>Pass</span>
+        </a>
+        <a href="affiliation.html" class="nav-item active">
+            <i class="fas fa-share-alt"></i>
+            <span>Affiliation</span>
+        </a>
+        <a href="profil.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profil</span>
+        </a>
+        <a href="contact.html" class="nav-item">
+            <i class="fas fa-headset"></i>
+            <span>Contact</span>
+        </a>
+    </nav>
+
+    <script>
+        // Générer QR Code
+        new QRCode(document.getElementById("qrcode"), {
+            text: "https://moninvest.com/ref/JEAN123",
+            width: 180,
+            height: 180
+        });
+
+        function copierLienAffiliation() {
+            navigator.clipboard.writeText('https://moninvest.com/ref/JEAN123');
+            alert('✅ Lien d\'affiliation copié !');
+        }
+
+        function partagerLien() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Rejoignez Mon Invest',
+                    text: 'Investissez et gagnez 10% par jour avec mon lien',
+                    url: 'https://moninvest.com/ref/JEAN123'
+                });
+            } else {
+                alert('Partage non supporté sur ce navigateur');
+            }
+        }
+
+        function partagerWhatsApp() {
+            window.open('https://wa.me/?text=Rejoignez%20Mon%20Invest%20avec%20mon%20lien%20:%20https://moninvest.com/ref/JEAN123');
+        }
+
+        function partagerTelegram() {
+            window.open('https://t.me/share/url?url=https://moninvest.com/ref/JEAN123&text=Rejoignez%20Mon%20Invest%20avec%20mon%20lien');
+        }
+
+        function partagerSMS() {
+            window.location.href = 'sms:?body=Rejoignez%20Mon%20Invest%20:%20https://moninvest.com/ref/JEAN123';
+        }
+
+        function partagerEmail() {
+            window.location.href = 'mailto:?subject=Rejoignez%20Mon%20Invest&body=Investissez%20et%20gagnez%2010%%20par%20jour%20:%20https://moninvest.com/ref/JEAN123';
+        }
+
+        function voirTousFilleuls() {
+            alert('Redirection vers la liste complète des filleuls');
+        }
+    </script>
+</body>
+</html>

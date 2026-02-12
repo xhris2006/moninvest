@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Inscription - Mon Invest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container" style="display: flex; flex-direction: column; justify-content: center; min-height: 100vh;">
+        <!-- En-tête -->
+        <div style="text-align: center; margin-bottom: 32px;">
+            <a href="login.html" style="position: absolute; top: 20px; left: 20px; color: var(--dark);">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <div style="background: linear-gradient(135deg, #4361ee, #3a0ca3); width: 70px; height: 70px; border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                <i class="fas fa-user-plus" style="font-size: 32px; color: white;"></i>
+            </div>
+            <h1 style="margin-bottom: 8px;">Créer un compte</h1>
+            <p style="color: var(--gray);">Commencez à investir en 2 minutes</p>
+        </div>
+
+        <!-- Formulaire d'inscription -->
+        <div class="card" style="margin-bottom: 20px;">
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label class="form-label">Nom complet</label>
+                    <div style="position: relative;">
+                        <i class="fas fa-user" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray);"></i>
+                        <input type="text" class="form-control" id="nom_complet" placeholder="Jean Dupont" required style="padding-left: 44px;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <div style="position: relative;">
+                        <i class="fas fa-envelope" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray);"></i>
+                        <input type="email" class="form-control" id="email" placeholder="exemple@email.com" required style="padding-left: 44px;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Téléphone</label>
+                    <div style="position: relative;">
+                        <i class="fas fa-phone" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray);"></i>
+                        <input type="tel" class="form-control" id="telephone" placeholder="+225 07 08 09 10 11" required style="padding-left: 44px;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Mot de passe</label>
+                    <div style="position: relative;">
+                        <i class="fas fa-lock" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray);"></i>
+                        <input type="password" class="form-control" id="password" placeholder="••••••••" required style="padding-left: 44px;">
+                        <i class="fas fa-eye" id="togglePassword" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--gray); cursor: pointer;"></i>
+                    </div>
+                    <div style="font-size: 12px; color: var(--gray); margin-top: 4px;">
+                        Minimum 6 caractères
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Confirmer le mot de passe</label>
+                    <div style="position: relative;">
+                        <i class="fas fa-lock" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray);"></i>
+                        <input type="password" class="form-control" id="confirm_password" placeholder="••••••••" required style="padding-left: 44px;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Code parrain (optionnel)</label>
+                    <div style="position: relative;">
+                        <i class="fas fa-gift" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray);"></i>
+                        <input type="text" class="form-control" id="code_parrain" placeholder="Ex: JEAN123" style="padding-left: 44px;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display: flex; align-items: start; gap: 12px;">
+                        <input type="checkbox" id="accept_terms" required style="accent-color: var(--primary); width: 20px; height: 20px; margin-top: 2px;">
+                        <span style="font-size: 14px; color: var(--gray);">
+                            J'accepte les <a href="#" style="color: var(--primary); text-decoration: none;">conditions générales</a> 
+                            et la <a href="#" style="color: var(--primary); text-decoration: none;">politique de confidentialité</a>
+                        </span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" style="padding: 16px; font-size: 16px;">
+                    <i class="fas fa-user-plus"></i>
+                    S'inscrire
+                </button>
+            </form>
+        </div>
+
+        <!-- Lien connexion -->
+        <div style="text-align: center;">
+            <p style="color: var(--gray);">Déjà inscrit ?</p>
+            <a href="login.html" style="color: var(--primary); text-decoration: none; font-weight: 600;">
+                Se connecter
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Afficher/masquer mot de passe
+        document.getElementById('togglePassword')?.addEventListener('click', function() {
+            const password = document.getElementById('password');
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // Gestion inscription
+        async function handleRegister(event) {
+            event.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const confirm = document.getElementById('confirm_password').value;
+
+            // Vérifier mots de passe
+            if (password !== confirm) {
+                alert('❌ Les mots de passe ne correspondent pas');
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('❌ Le mot de passe doit contenir au moins 6 caractères');
+                return;
+            }
+
+            // Simuler inscription
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Inscription...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                alert('✅ Inscription réussie ! Vérifiez votre email pour confirmer votre compte.');
+                window.location.href = 'login.html';
+                
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        }
+
+        // Récupérer code parrain depuis URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const ref = urlParams.get('ref');
+        if (ref) {
+            document.getElementById('code_parrain').value = ref;
+        }
+    </script>
+</body>
+</html>

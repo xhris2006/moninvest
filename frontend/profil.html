@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mon Profil - Mon Invest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Bouton retour -->
+        <div style="margin-bottom: 20px;">
+            <a href="index.html" style="color: var(--dark); text-decoration: none; display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="margin-right: 12px;"></i>
+                <span>Retour</span>
+            </a>
+        </div>
+
+        <!-- En-tête profil -->
+        <div class="profile-header">
+            <div style="position: relative; display: inline-block;">
+                <img src="https://ui-avatars.com/api/?name=Xhris+Dior&size=200&background=4361ee&color=fff" alt="Photo de profil" class="profile-image">
+                <button style="position: absolute; bottom: 10px; right: 10px; background: var(--primary); color: white; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; border: 2px solid white;">
+                    <i class="fas fa-camera"></i>
+                </button>
+            </div>
+            <h2 class="profile-name">Xhris Dior</h2>
+            <p class="profile-email">xhris.dior@email.com</p>
+            <div style="display: flex; gap: 8px; justify-content: center;">
+                <span style="background: var(--light); padding: 6px 12px; border-radius: 20px; font-size: 13px;">
+                    <i class="fas fa-phone"></i> +237694600007
+                </span>
+                <span style="background: var(--light); padding: 6px 12px; border-radius: 20px; font-size: 13px;">
+                    <i class="fas fa-check-circle" style="color: var(--success);"></i> Compte vérifié
+                </span>
+            </div>
+        </div>
+
+        <!-- Code parrain -->
+        <div class="card" style="background: linear-gradient(135deg, #4361ee, #3a0ca3); color: white;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <span style="font-weight: 600;">Votre code parrain</span>
+                <span style="background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 20px; font-size: 12px;">
+                    <i class="fas fa-star"></i> Actif
+                </span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="background: rgba(255,255,255,0.2); padding: 14px; border-radius: 8px; flex: 1; font-size: 20px; font-weight: 700; letter-spacing: 2px; text-align: center;">
+                    XHRIS1234
+                </div>
+                <button onclick="copierCode()" style="background: white; border: none; padding: 14px; border-radius: 8px; color: var(--primary); cursor: pointer;">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Statistiques -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">2 450 000</div>
+                <div class="stat-label">Total gagné</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">24</div>
+                <div class="stat-label">Filleuls</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">125 000</div>
+                <div class="stat-label">Commissions</div>
+            </div>
+        </div>
+
+        <!-- Informations personnelles -->
+        <div class="card">
+            <div class="card-header">
+                <h3>Informations personnelles</h3>
+                <button style="background: none; border: none; color: var(--primary); cursor: pointer;" onclick="modifierProfil()">
+                    <i class="fas fa-edit"></i> Modifier
+                </button>
+            </div>
+            
+            <div style="margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <span style="color: var(--gray);">Nom complet</span>
+                    <span style="font-weight: 600;">xhris dior</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <span style="color: var(--gray);">Email</span>
+                    <span style="font-weight: 600;">xhris.dior@email.com</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <span style="color: var(--gray);">Téléphone</span>
+                    <span style="font-weight: 600;">+237694600007</span>
+                
+                <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <span style="color: var(--gray);">Date d'inscription</span>
+                    <span style="font-weight: 600;">15 Janvier 2025</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 12px 0;">
+                    <span style="color: var(--gray);">Dernière connexion</span>
+                    <span style="font-weight: 600;">Aujourd'hui, 09:30</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pass actifs -->
+        <div class="card">
+            <div class="card-header">
+                <h3>Mes pass actifs</h3>
+                <a href="pass.html" style="color: var(--primary); text-decoration: none; font-size: 14px;">Voir tout</a>
+            </div>
+            
+            <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--light); border-radius: 8px; margin-bottom: 12px;">
+                    <div>
+                        <span style="font-weight: 700; color: var(--primary);">Pass Bronze</span>
+                        <div style="font-size: 12px; color: var(--gray);">Investi: 4 000 FCFA</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700;">58 jours restants</span>
+                        <div style="font-size: 12px; color: var(--success);">Actif</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--light); border-radius: 8px; margin-bottom: 12px;">
+                    <div>
+                        <span style="font-weight: 700; color: var(--primary);">Pass Or</span>
+                        <div style="font-size: 12px; color: var(--gray);">Investi: 7 000 FCFA</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700;">45 jours restants</span>
+                        <div style="font-size: 12px; color: var(--success);">Actif</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--light); border-radius: 8px;">
+                    <div>
+                        <span style="font-weight: 700; color: var(--primary);">Pass Diamant</span>
+                        <div style="font-size: 12px; color: var(--gray);">Investi: 15 000 FCFA</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700;">60 jours restants</span>
+                        <div style="font-size: 12px; color: var(--success);">Actif</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paramètres du compte -->
+        <div class="card">
+            <h3 style="margin-bottom: 16px;">Paramètres</h3>
+            
+            <div style="margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <div>
+                        <div style="font-weight: 600;">Notifications</div>
+                        <div style="font-size: 12px; color: var(--gray);">Recevoir les alertes</div>
+                    </div>
+                    <label style="position: relative; display: inline-block; width: 52px; height: 28px;">
+                        <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;">
+                        <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px;">
+                            <span style="position: absolute; content: ''; height: 22px; width: 22px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; transform: translateX(24px);"></span>
+                        </span>
+                    </label>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <div>
+                        <div style="font-weight: 600;">Biométrie</div>
+                        <div style="font-size: 12px; color: var(--gray);">Connexion avec empreinte</div>
+                    </div>
+                    <label style="position: relative; display: inline-block; width: 52px; height: 28px;">
+                        <input type="checkbox" style="opacity: 0; width: 0; height: 0;">
+                        <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px;">
+                            <span style="position: absolute; content: ''; height: 22px; width: 22px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%;"></span>
+                        </span>
+                    </label>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <span style="font-weight: 600;">Changer mot de passe</span>
+                    <i class="fas fa-chevron-right" style="color: var(--gray);"></i>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                    <span style="font-weight: 600;">Langue</span>
+                    <span style="color: var(--gray);">Français <i class="fas fa-chevron-right" style="margin-left: 8px;"></i></span>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; padding: 12px 0;">
+                    <span style="font-weight: 600;">Méthodes de paiement</span>
+                    <i class="fas fa-chevron-right" style="color: var(--gray);"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bouton déconnexion -->
+        <button class="btn" style="background: rgba(239, 71, 111, 0.1); color: var(--danger); border: none; width: 100%; margin-bottom: 30px;" onclick="deconnexion()">
+            <i class="fas fa-sign-out-alt"></i> Se déconnecter
+        </button>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="pass.html" class="nav-item">
+            <i class="fas fa-ticket-alt"></i>
+            <span>Pass</span>
+        </a>
+        <a href="affiliation.html" class="nav-item">
+            <i class="fas fa-share-alt"></i>
+            <span>Affiliation</span>
+        </a>
+        <a href="profil.html" class="nav-item active">
+            <i class="fas fa-user"></i>
+            <span>Profil</span>
+        </a>
+        <a href="contact.html" class="nav-item">
+            <i class="fas fa-headset"></i>
+            <span>Contact</span>
+        </a>
+    </nav>
+
+    <script>
+        function copierCode() {
+            navigator.clipboard.writeText('dior123');
+            alert('Code parrain copié !');
+        }
+
+        function modifierProfil() {
+            alert('Fonctionnalité de modification de profil');
+        }
+
+        function deconnexion() {
+            if(confirm('Voulez-vous vraiment vous déconnecter ?')) {
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>
